@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://samratsk.github.io/taptap-website/sitemap-index.xml
