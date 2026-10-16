@@ -48,5 +48,14 @@ const IN_REVIEW = false;
       dlg.addEventListener('click', e => { if (e.target === dlg) dlg.close(); }); // backdrop click
     }
   })();</script> <footer class="foot wrap" data-tt-j7pv25f6> <span data-tt-j7pv25f6>TapTap · <a href="/taptap-website/privacy" data-tt-j7pv25f6>Privacy</a> · <a href="https://buymeacoffee.com/samratsk" target="_blank" rel="noopener" data-tt-j7pv25f6>Buy me a coffee</a> · <a id="fb" href="https://docs.google.com/forms/d/e/1FAIpQLSei6pyYepn_i-zwBaSk2iI69y4ySUPPG_5E7BB8yd0OPh-3tQ/viewform" target="_blank" rel="noopener" data-tt-j7pv25f6>Feedback</a></span> <span data-tt-j7pv25f6>Made with <span role="img" aria-label="love" data-tt-j7pv25f6>&#10084;&#65039;</span></span> </footer> <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Why not just paste?","acceptedAnswer":{"@type":"Answer","text":"Some editors and forms block paste, mangle formatting, or only react to real key presses. TapTap types each character the way a keyboard would, so the page sees normal typing."}},{"@type":"Question","name":"Which fields does it work in?","acceptedAnswer":{"@type":"Answer","text":"Text boxes, text areas, rich text editors, and code editors like Monaco (VS Code style), CodeMirror and Ace. It also reaches fields inside frames and web components."}},{"@type":"Question","name":"Why does Chrome show a debugging bar?","acceptedAnswer":{"@type":"Answer","text":"That bar is how Chrome lets an extension send real keystrokes. It appears only while TapTap is typing and closes when it finishes. Pressing Cancel on it stops typing."}},{"@type":"Question","name":"Does my text leave my computer?","acceptedAnswer":{"@type":"Answer","text":"No. Your text stays in your browser. TapTap has no servers, no accounts and no tracking."}},{"@type":"Question","name":"Can I stop it halfway?","acceptedAnswer":{"@type":"Answer","text":"Yes. Press Stop or Esc at any time. While it types, the field is locked so stray key presses cannot mix into your text."}},{"@type":"Question","name":"Which browsers are supported?","acceptedAnswer":{"@type":"Answer","text":"Chrome and Microsoft Edge, and other Chromium browsers that allow Chrome Web Store extensions."}}]}</script> <script>
-    document.getElementById('fb').href += '?' + new URLSearchParams({ usp: 'pp_url', 'entry.978582095': navigator.userAgent });
+    const ua = navigator.userAgent;
+    const sys = () => {
+      const br = ([['Edge', /Edg\/([\d.]+)/], ['Opera', /OPR\/([\d.]+)/], ['Firefox', /Firefox\/([\d.]+)/], ['Chrome', /Chrome\/([\d.]+)/], ['Safari', /Version\/([\d.]+).*Safari/]])
+        .map(([n, r]) => { const m = ua.match(r); return m && `${n} ${m[1]}`; }).find(Boolean) || 'Unknown';
+      const os = ua.match(/Android [\d.]+|iPhone OS [\d_]+|CrOS|Mac OS X|Windows|Linux/)?.[0].replace('CrOS', 'ChromeOS').replace('Mac OS X', 'macOS').replace(/_/g, '.') || 'Unknown';
+      return `Browser: ${br}
+    OS: ${os}
+    User Agent: ${ua}`;
+    };
+    document.getElementById('fb').href += '?' + new URLSearchParams({ usp: 'pp_url', 'entry.978582095': sys() });
   </script>  </body></html> 
